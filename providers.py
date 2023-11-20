@@ -60,7 +60,10 @@ class GPUTempMetricProvider(MetricProvider):
 		Returns:
 			int: The GPU temperature value.
 		"""
-		return self._adlDevices[0].getCurrentTemperature()
+		gpuTemp = self._adlDevices[0].getCurrentTemperature()
+		if (gpuTemp == 0):
+			raise Exception("Failed to get GPU temperature")
+		return gpuTemp
 	
 class CPUUsageMetricProvider(MetricProvider):
 	def __init__(self):

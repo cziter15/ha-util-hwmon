@@ -38,7 +38,10 @@ class MetricHandler:
 		"""Send metric update to MQTT broker"""
 		for provider in self._providers:
 			if provider.isValid():
-				self._mqttClient.publish(self._prefix + provider.getName(), provider.getValue())
+				try:
+					self._mqttClient.publish(self._prefix + provider.getName(), provider.getValue())
+				except:
+					pass
 
 	def loop(self):
 		"""Main loop for updating metrics"""

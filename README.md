@@ -7,12 +7,23 @@ HWMon is a robust and efficient hardware monitoring tool designed to work on Win
 Before you begin, ensure you have met the following requirements:
 
 * You have installed the latest version of Home Assistant.
-* You have a Windows machine. HWMon can be run on Windows 7, 8, and 10.
+* You have a Windows machine (verified on Windows 11).
 
 ## Compile
 
 To compile use PyInstaller:
 `python -m PyInstaller --onefile monitor.py --windowed`
+
+It will output an executable file in dist directory.
+
+You also need some config (config.ini) next to the executable:
+
+```ini
+[credentials]
+user=<username for mqtt>
+pass=<password for mqtt>
+host=<host for mqtt>
+```
 
 ## Installing HWMon
 
@@ -30,7 +41,7 @@ HWMon uses the Windows Task Scheduler to run with escalated privileges on boot.
 
 To use HWMon, simply start your system. The program will run automatically on boot thanks to the Windows Task Scheduler.
 
-If you need to uninstall HWMon, open a command prompt with administrative privileges, navigate to the HWMon directory and run `hwmon.exe uninstall`.
+If you need to uninstall HWMon, open a command prompt with administrative privileges, navigate to the HWMon directory and run `monitor.exe uninstall`.
 
 ## Contributing to HWMon
 
