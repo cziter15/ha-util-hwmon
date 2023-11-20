@@ -39,11 +39,11 @@ To remove the task:
 ## Technical details
 It will probably grow in the future but for now, the tool publishes three things to MQTT:
 
-| Topic | Value |
-|------------|------------|
-| <prefix>/ram_used_percent | RAM in use (in percent) |
-| <prefix>/gpu_temperature_celsius | GPU temperature, can be treated as APU temperature on Dell Wyse 5060 |
-| <prefix>/cpu_utilization_percent | CPU usage in percent (should be close to the value you see in Task Manager) |
+| Topic | Value | Unit |
+|------------|------------|------------|
+| <prefix>/ram_used_percent | Random Access Memory (RAM) in use | % |
+| <prefix>/gpu_temperature_celsius | GPU temperature (APU temperature on Dell Wyse 5060) | °C |
+| <prefix>/cpu_utilization_percent | CPU usage (close to the value you'll see in Task Manager) | % |
 
 `<prefix>` is `hwmon` (I'll add this to config as an option soon)
 
