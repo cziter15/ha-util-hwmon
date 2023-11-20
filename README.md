@@ -1,13 +1,6 @@
-# HWMon - Hardware Monitor
+# Monitor - Hardware Monitor
 
-HWMon is a robust and efficient hardware monitoring tool designed to work on Windows systems. It operates via MQTT to feed Home Assistant with crucial data regarding the health and performance of your hardware.
-
-## Prerequisites
-
-Before you begin, ensure you have met the following requirements:
-
-* You have installed the latest version of Home Assistant.
-* You have a Windows machine (verified on Windows 11).
+This is a small utility service created to monitor parameters of my Dell Wyse 5060 thin client, serving as the host for a Smart Home (Home Assistant) virtual machine. The virtual machine operates on the Windows platform, and additionally, we utilize this unit as a TV set-top box, leveraging its capability to run Kodi. With only passive cooling (fanless), it's advisable to keep an eye on the APU temperature and CPU usage for this machine and it was my motivation to write this code.
 
 ## Compile
 
@@ -16,7 +9,8 @@ To compile use PyInstaller:
 
 It will output an executable file in dist directory.
 
-You also need some config (config.ini) next to the executable:
+# Configuration
+Place configuration file (config.ini) next to the executable:
 
 ```ini
 [credentials]
@@ -25,32 +19,33 @@ pass=<password for mqtt>
 host=<host for mqtt>
 ```
 
-## Installing HWMon
+## Installation
 
-To install HWMon, follow these steps:
+To install the service, follow these steps:
 
-1. Download the latest release from the GitHub repository.
-2. Extract the contents of the .zip file to your desired location.
-3. Open a command prompt with administrative privileges.
-4. Navigate to the directory where you extracted HWMon.
-5. Run `monitor.exe install` to install the task.
+1. Build thhe executable.
+2. Create configuration file.
+3. Move the executable file (and config) to a stable and secure path to prevent accidental removal.
+4. Open a command prompt with administrative privileges.
+5. Navigate to the directory where you extracted HWMon.
+6. Run `monitor.exe install` to install the task.
 
-HWMon uses the Windows Task Scheduler to run with escalated privileges on boot.
+The task should appear in Windows Task Scheduler.
 
-## Using HWMon
+To remove the task:
+1. First, locate the `monitor.exe` in Task Manager and kill the process.
+2. Run `monitor.exe uninstall` or remove the task in Task Scheduler UI.
 
-To use HWMon, simply start your system. The program will run automatically on boot thanks to the Windows Task Scheduler.
+## Technical details
+It will probably grow in the future but for now, the tool publishes three things to MQTT:
 
-If you need to uninstall HWMon, open a command prompt with administrative privileges, navigate to the HWMon directory and run `monitor.exe uninstall`.
+| Topic | Value |
+|------------|------------|
+| <prefix>/ram_used_percent | RAM in use (in percent) |
+| <prefix>/gpu_temperature_celsius | GPU temperature, can be treated as APU temperature on Dell Wyse 5060 |
+| <prefix>/cpu_utilization_percent | CPU usage in percent (should be close to the value you see in Task Manager) |
 
-## Contributing to HWMon
+`<prefix>` is `hwmon` (I'll add this to config as an option soon)
 
-To contribute to HWMon, follow these steps:
-
-1. Fork this repository.
-2. Create a branch: `git checkout -b <branch_name>`.
-3. Make your changes and commit them: `git commit -m '<commit_message>'`
-4. Push to the original branch: `git push origin <project_name>/<location>`
-5. Create the pull request.
-
-Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+## Screenshot
+![Screenshot](screenshots/image.png)
