@@ -9,6 +9,11 @@ Before you begin, ensure you have met the following requirements:
 * You have installed the latest version of Home Assistant.
 * You have a Windows machine. HWMon can be run on Windows 7, 8, and 10.
 
+## Compile
+
+To compile use PyInstaller:
+`python -m PyInstaller --onefile monitor.py --windowed`
+
 ## Installing HWMon
 
 To install HWMon, follow these steps:
@@ -17,7 +22,7 @@ To install HWMon, follow these steps:
 2. Extract the contents of the .zip file to your desired location.
 3. Open a command prompt with administrative privileges.
 4. Navigate to the directory where you extracted HWMon.
-5. Run `hwmon.exe install` to install the task.
+5. Run `monitor.exe install` to install the task.
 
 HWMon uses the Windows Task Scheduler to run with escalated privileges on boot.
 
