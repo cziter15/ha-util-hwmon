@@ -41,11 +41,11 @@ It will probably grow in the future but for now, the tool publishes three things
 
 | Topic | Value | Unit |
 |------------|------------|------------|
-| <prefix>/ram_used_percent | Random Access Memory (RAM) in use | % |
-| <prefix>/gpu_temperature_celsius | GPU temperature (APU temperature on Dell Wyse 5060) | °C |
-| <prefix>/cpu_utilization_percent | CPU usage (close to the value you'll see in Task Manager) | % |
+| prefix/ram_used_percent | Random Access Memory (RAM) in use | % |
+| prefix/gpu_temperature_celsius | GPU temperature (APU temperature on Dell Wyse 5060) | °C |
+| prefix/cpu_utilization_percent | CPU usage (close to the value you'll see in Task Manager) | % |
 
-`<prefix>` is `hwmon` (I'll add this to config as an option soon)
+`prefix` is now hardcoded as `hwmon` (I'll add this to config as an option soon)
 
 ## Screenshot
 ![Screenshot](screenshots/image.png)
