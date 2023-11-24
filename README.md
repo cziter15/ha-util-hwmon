@@ -4,7 +4,7 @@ This is a small utility service created to monitor parameters of my Dell Wyse 50
 
 ## Compile
 
-To compile use PyInstaller:
+To compile, please use PyInstaller:
 `python -m PyInstaller --onefile monitor.py --windowed`
 
 It will output an executable file in dist directory.
@@ -23,7 +23,7 @@ host=<host for mqtt>
 
 To install the service, follow these steps:
 
-1. Build thhe executable.
+1. Build the executable.
 2. Create configuration file.
 3. Move the executable file (and config) to a stable and secure path to prevent accidental removal.
 4. Open a command prompt with administrative privileges.
